@@ -19,6 +19,7 @@ ext {
 
     //app compat
     appCompatVersion = '1.4.0'
+    lifecycleVersion = '2.4.0'
 
     //compose
     composeVersion = '1.0.5'

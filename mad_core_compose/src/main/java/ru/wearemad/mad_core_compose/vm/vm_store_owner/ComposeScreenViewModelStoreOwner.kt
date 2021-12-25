@@ -1,0 +1,5 @@
+package ru.wearemad.mad_core_compose.vm.vm_store_owner
+
+import androidx.lifecycle.ViewModelStoreOwner
+
+interface ComposeScreenViewModelStoreOwner : ViewModelStoreOwner
