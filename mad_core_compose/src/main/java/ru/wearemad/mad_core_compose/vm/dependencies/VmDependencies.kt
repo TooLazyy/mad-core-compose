@@ -4,7 +4,7 @@ import ru.wearemad.mad_base.coroutines.DispatchersProvider
 import ru.wearemad.mad_core_compose.message.controller.ComposeMessageController
 import ru.wearemad.mad_core_compose.vm.lifecycle.ScreenLifecycleObserver
 
-interface  VmDependencies {
+interface VmDependencies {
 
     val dispatchers: DispatchersProvider
 
