@@ -16,7 +16,8 @@ class DefaultRequestResultStore : RequestResultStore {
 
     private val results = hashMapOf<RequestResultKey, Any>()
     private val resultsChangedChannel = MutableSharedFlow<Unit>(
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
+        onBufferOverflow = BufferOverflow.DROP_OLDEST,
+        extraBufferCapacity = 5
     )
 
     override val resultsChangedFlow: Flow<Unit> = resultsChangedChannel
