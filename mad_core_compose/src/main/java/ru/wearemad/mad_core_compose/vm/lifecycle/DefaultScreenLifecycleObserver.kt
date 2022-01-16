@@ -22,6 +22,9 @@ class DefaultScreenLifecycleObserver : ScreenLifecycleObserver {
 
     override val lifecycleStateFlow: Flow<LifecycleStateData> = viewLifecycleFlow
 
+    override val lifecycleState: LifecycleStateData
+        get() = currentState
+
     override fun onScreenStateChanged(screenLifecycleState: ScreenLifecycleState) {
         currentState = currentState.copy(
             screenLifecycleState = screenLifecycleState

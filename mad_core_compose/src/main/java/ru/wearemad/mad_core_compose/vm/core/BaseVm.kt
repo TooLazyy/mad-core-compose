@@ -18,6 +18,7 @@ import ru.wearemad.mad_core_compose.vm.event.DefaultEventsSource
 import ru.wearemad.mad_core_compose.vm.event.EventsSource
 import ru.wearemad.mad_core_compose.vm.event.VmEvent
 import ru.wearemad.mad_core_compose.vm.lifecycle.ScreenLifecycleObserver
+import ru.wearemad.mad_core_compose.vm.result_listener.VmRequestResultHandler
 import ru.wearemad.mad_core_compose.vm.state.ViewState
 import kotlin.coroutines.CoroutineContext
 
@@ -31,7 +32,8 @@ abstract class BaseVm<State : ViewState, Event : VmEvent>(
     CoreVm<State, Event>,
     CoroutineScope,
     EventsSource<Event> by eventSource,
-    ScreenLifecycleObserver by dependencies.screenLifecycleObserver {
+    ScreenLifecycleObserver by dependencies.screenLifecycleObserver,
+    VmRequestResultHandler by dependencies.requestResultHandler {
 
     private val parentJob = SupervisorJob()
 
@@ -52,7 +54,8 @@ abstract class BaseVm<State : ViewState, Event : VmEvent>(
     }
 
     override fun onCleared() {
-        eventSource.cancelAll()
+        eventSource.cancelEvents()
+        dependencies.requestResultHandler.cancelResults()
         parentJob.cancelChildren()
     }
 
