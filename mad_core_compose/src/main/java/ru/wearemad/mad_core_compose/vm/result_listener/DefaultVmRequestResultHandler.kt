@@ -61,7 +61,7 @@ class DefaultVmRequestResultHandler(
     override fun setResult(key: String, result: Any) {
         requestResultStore.setResultForKey(
             RequestResultKey(key),
-            result 
+            result
         )
     }
 
