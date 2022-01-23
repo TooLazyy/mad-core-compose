@@ -6,7 +6,7 @@ interface EventsSource<Event : VmEvent> {
 
     val eventsFlow: Flow<Event>
 
-    fun cancelAll()
+    fun cancelEvents()
 
     fun sendEventAsync(event: Event)
 

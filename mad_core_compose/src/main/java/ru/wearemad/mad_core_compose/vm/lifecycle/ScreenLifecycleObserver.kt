@@ -9,6 +9,8 @@ interface ScreenLifecycleObserver {
 
     val lifecycleStateFlow: Flow<LifecycleStateData>
 
+    val lifecycleState: LifecycleStateData
+
     fun onScreenStateChanged(screenLifecycleState: ScreenLifecycleState)
 
     fun onActivityStateChanged(activityLifecycleState: ActivityLifecycleState)

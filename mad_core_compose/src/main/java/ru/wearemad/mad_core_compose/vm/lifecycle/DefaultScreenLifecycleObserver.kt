@@ -22,6 +22,9 @@ class DefaultScreenLifecycleObserver : ScreenLifecycleObserver {
 
     override val lifecycleStateFlow: Flow<LifecycleStateData> = viewLifecycleFlow
 
+    override val lifecycleState: LifecycleStateData
+        get() = currentState
+
     override fun onScreenStateChanged(screenLifecycleState: ScreenLifecycleState) {
         currentState = currentState.copy(
             screenLifecycleState = screenLifecycleState
@@ -30,6 +33,7 @@ class DefaultScreenLifecycleObserver : ScreenLifecycleObserver {
 
     override fun onActivityStateChanged(activityLifecycleState: ActivityLifecycleState) {
         val activityCurrentState = currentState.activityLifecycleState
+
         /**
          * When we attach lifecycle observer to a LifecycleOwner,
          * it's get through the entire lifecycle state up to current
@@ -38,8 +42,10 @@ class DefaultScreenLifecycleObserver : ScreenLifecycleObserver {
          * In order to prevent this, check new event id is strictly less, then new one.
          * We can't fall into start or create state after resume if destroy was not called
          */
+        val oppositeState = activityCurrentState.checkOppositeState(activityLifecycleState)
         if (activityLifecycleState.stateId <= activityCurrentState.stateId &&
-            activityCurrentState.stateId != ActivityLifecycleState.Destroyed.stateId
+            activityCurrentState.stateId != ActivityLifecycleState.Destroyed.stateId &&
+            oppositeState.not()
         ) {
             return
         }

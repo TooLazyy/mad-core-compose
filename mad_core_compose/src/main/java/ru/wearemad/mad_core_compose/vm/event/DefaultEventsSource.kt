@@ -24,7 +24,7 @@ class DefaultEventsSource<Event : VmEvent>(
     override val eventsFlow: Flow<Event>
         get() = eventsChannel.receiveAsFlow()
 
-    override fun cancelAll() {
+    override fun cancelEvents() {
         parentJob.cancelChildren()
     }
 
