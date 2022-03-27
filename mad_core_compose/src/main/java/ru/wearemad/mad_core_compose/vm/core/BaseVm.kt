@@ -92,6 +92,14 @@ abstract class BaseVm<State : ViewState, Event : VmEvent>(
         }
     }
 
+    protected suspend fun <T> RequestResult<T>.handleError(
+        errorBlock: suspend (Throwable) -> Unit
+    ) = runOnUi {
+        when (val result = this@handleError) {
+            is RequestResult.Error -> handleError(result.error, errorBlock)
+        }
+    }
+
     protected suspend fun <T> RequestResult<T>.handleResultWithError(
         resultBlock: suspend (T) -> Unit,
         errorBlock: suspend (Throwable) -> Unit
