@@ -11,7 +11,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.CoroutineScope
 import ru.wearemad.mad_core_compose.message.controller.ComposeMessageController
-import ru.wearemad.mad_core_compose.message.controller.ComposeMessageControllerImpl
+import ru.wearemad.mad_core_compose.message.controller.DefaultComposeMessageController
 import ru.wearemad.mad_core_compose.message.holder.MessageControllerHolder
 import ru.wearemad.mad_core_compose.utils.rememberLifecycleObserver
 
@@ -23,7 +23,7 @@ fun rememberSnackbarHostState(
         context: Context,
         coroutineScope: CoroutineScope
     ) -> ComposeMessageController = { snackbarHostState, context, coroutineScope ->
-        ComposeMessageControllerImpl(
+        DefaultComposeMessageController(
             snackbarHostState,
             context,
             coroutineScope

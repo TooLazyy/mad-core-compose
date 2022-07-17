@@ -9,7 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class ComposeMessageControllerImpl(
+class DefaultComposeMessageController(
     private val snackbarHostState: SnackbarHostState,
     private val context: Context,
     private val coroutineScope: CoroutineScope

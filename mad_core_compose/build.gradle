@@ -12,8 +12,6 @@ android {
     defaultConfig {
         minSdkVersion project.minSdk
         targetSdkVersion project.targetSdk
-        versionCode project.vCode
-        versionName project.vName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -31,23 +29,21 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11
-        useIR = true
     }
     buildFeatures {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion project.composeVersion
+        kotlinCompilerExtensionVersion project.composeCompilerVersion
     }
 }
 
 dependencies {
 
     implementation "androidx.activity:activity-compose:$composeActivityVersion"
-    implementation "androidx.compose.runtime:runtime:$composeVersion"
+    implementation "androidx.compose.runtime:runtime:$composeRuntimeVersion"
 
-    implementation "com.github.TooLazyy:mad-basic:$madBasicVersion"
-    implementation "androidx.compose.material:material:$composeVersion"
+    implementation "androidx.compose.material:material:$composeMaterialVersion"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
 
