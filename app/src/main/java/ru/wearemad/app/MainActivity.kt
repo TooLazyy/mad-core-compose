@@ -1,4 +1,4 @@
-package ru.wearemad.mad_core_compose
+package ru.wearemad.app
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

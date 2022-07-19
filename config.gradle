@@ -1,5 +1,4 @@
 ext {
-
     applicationName = "Core Compose"
     appId = "ru.wearemad.mad_core_compose"
     compileSdk = 31

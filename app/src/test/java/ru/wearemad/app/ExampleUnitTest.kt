@@ -1,4 +1,4 @@
-package ru.wearemad.mad_core_compose
+package ru.wearemad.app
 
 import org.junit.Test
 

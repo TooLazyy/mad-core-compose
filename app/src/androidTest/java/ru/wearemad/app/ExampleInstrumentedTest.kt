@@ -1,4 +1,4 @@
-package ru.wearemad.mad_core_compose
+package ru.wearemad.app
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
