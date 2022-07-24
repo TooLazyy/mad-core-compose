@@ -1,9 +1,9 @@
 ext {
     applicationName = "Core Compose"
     appId = "ru.wearemad.mad_core_compose"
-    compileSdk = 31
+    compileSdk = 32
     minSdk = 21
-    targetSdk = 31
+    targetSdk = 32
 
     //version
     vCode = 3
