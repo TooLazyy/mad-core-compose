@@ -4,11 +4,10 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import ru.wearemad.mad_base.coroutines.DispatchersProvider
+import ru.wearemad.mad_core_compose.dispatcher.DispatchersProvider
 import ru.wearemad.mad_core_compose.result_handler.RequestResultData
 import ru.wearemad.mad_core_compose.result_handler.RequestResultKey
 import ru.wearemad.mad_core_compose.result_handler.RequestResultStore

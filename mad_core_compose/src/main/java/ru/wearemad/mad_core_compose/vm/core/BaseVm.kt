@@ -8,11 +8,10 @@ import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.wearemad.mad_base.coroutines.RequestResult
+import ru.wearemad.mad_core_compose.data.RequestResult
 import ru.wearemad.mad_core_compose.vm.dependencies.VmDependencies
 import ru.wearemad.mad_core_compose.vm.event.DefaultEventsSource
 import ru.wearemad.mad_core_compose.vm.event.EventsSource
@@ -97,6 +96,7 @@ abstract class BaseVm<State : ViewState, Event : VmEvent>(
     ) = runOnUi {
         when (val result = this@handleError) {
             is RequestResult.Error -> handleError(result.error, errorBlock)
+            is RequestResult.Success -> {}
         }
     }
 

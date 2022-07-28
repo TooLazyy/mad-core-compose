@@ -2,7 +2,6 @@ package ru.wearemad.mad_core_compose.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.wearemad.mad_core_compose.vm.event.EventsSource
 import ru.wearemad.mad_core_compose.vm.event.VmEvent
