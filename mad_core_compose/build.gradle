@@ -45,6 +45,8 @@ dependencies {
     implementation "androidx.compose.material:material:$composeMaterialVersion"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
+
+    implementation "com.github.TooLazyy:Mad-Utils:$madUtilsVersion"
 }
 
 project.afterEvaluate {

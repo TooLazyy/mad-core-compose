@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.wearemad.mad_core_compose.data.RequestResult
 import ru.wearemad.mad_core_compose.vm.dependencies.VmDependencies
 import ru.wearemad.mad_core_compose.vm.event.DefaultEventsSource
 import ru.wearemad.mad_core_compose.vm.event.EventsSource
@@ -19,6 +18,7 @@ import ru.wearemad.mad_core_compose.vm.event.VmEvent
 import ru.wearemad.mad_core_compose.vm.lifecycle.ScreenLifecycleObserver
 import ru.wearemad.mad_core_compose.vm.result_listener.VmRequestResultHandler
 import ru.wearemad.mad_core_compose.vm.state.ViewState
+import ru.wearemad.mad_utils.request_result.RequestResult
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseVm<State : ViewState, Event : VmEvent>(

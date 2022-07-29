@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import ru.wearemad.mad_core_compose.dispatcher.DispatchersProvider
 import ru.wearemad.mad_core_compose.result_handler.RequestResultData
 import ru.wearemad.mad_core_compose.result_handler.RequestResultKey
 import ru.wearemad.mad_core_compose.result_handler.RequestResultStore
@@ -15,6 +14,7 @@ import ru.wearemad.mad_core_compose.vm.lifecycle.ScreenLifecycleObserver
 import ru.wearemad.mad_core_compose.vm.lifecycle.data.ActivityLifecycleState
 import ru.wearemad.mad_core_compose.vm.lifecycle.data.LifecycleStateData
 import ru.wearemad.mad_core_compose.vm.lifecycle.data.ScreenLifecycleState
+import ru.wearemad.mad_utils.dispatcher.DispatchersProvider
 import kotlin.coroutines.CoroutineContext
 
 class DefaultVmRequestResultHandler(
