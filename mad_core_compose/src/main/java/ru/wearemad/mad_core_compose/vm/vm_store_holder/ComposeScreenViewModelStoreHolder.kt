@@ -9,4 +9,6 @@ interface ComposeScreenViewModelStoreHolder {
     ): ComposeScreenViewModelStoreOwner
 
     fun clearScreenVmOwner(screenId: String)
+
+    fun clearAll()
 }

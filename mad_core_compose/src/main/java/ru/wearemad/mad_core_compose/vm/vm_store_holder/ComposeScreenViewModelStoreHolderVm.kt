@@ -19,4 +19,11 @@ class ComposeScreenViewModelStoreHolderVm :
     override fun clearScreenVmOwner(screenId: String) {
         screenVmMap.remove(screenId)?.viewModelStore?.clear()
     }
+
+    override fun clearAll() {
+        screenVmMap.forEach {
+            it.value.viewModelStore.clear()
+        }
+        screenVmMap.clear()
+    }
 }
