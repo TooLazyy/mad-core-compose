@@ -1,5 +1,6 @@
 package ru.wearemad.mad_core_compose.vm.vm_store_holder
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import ru.wearemad.mad_core_compose.vm.vm_store_owner.ComposeScreenViewModelStoreOwner
 import ru.wearemad.mad_core_compose.vm.vm_store_owner.DefaultComposeScreenViewModelStoreOwner
@@ -9,6 +10,10 @@ class ComposeScreenViewModelStoreHolderVm :
     ComposeScreenViewModelStoreHolder {
 
     private val screenVmMap = hashMapOf<String, ComposeScreenViewModelStoreOwner>()
+
+    init {
+        Log.d("MIINE", "ComposeScreenViewModelStoreHolderVm")
+    }
 
     override fun getOrCreateScreenVmOwner(
         screenId: String
