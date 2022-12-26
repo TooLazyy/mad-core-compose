@@ -49,6 +49,7 @@ fun rememberSnackbarHostState(
         key = Unit,
         onResume = {
             Log.d("MIINE", "rememberSnackbarHostState resume")
+            holder.attachController(controller)
         },
         onPause = {
             Log.d("MIINE", "rememberSnackbarHostState pause")
