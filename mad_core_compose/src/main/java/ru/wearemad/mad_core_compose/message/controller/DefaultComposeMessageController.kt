@@ -1,6 +1,7 @@
 package ru.wearemad.mad_core_compose.message.controller
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.material.SnackbarDuration
 import androidx.compose.material.SnackbarHostState
@@ -17,6 +18,10 @@ class DefaultComposeMessageController(
 
     private var toast: Toast? = null
     private var snackJob: Job? = null
+
+    init {
+        Log.d("MIINE", "DefaultComposeMessageController init")
+    }
 
     override fun showSnack(
         text: String,

@@ -1,6 +1,7 @@
 package ru.wearemad.mad_core_compose.message
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.material.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -30,6 +31,7 @@ fun rememberSnackbarHostState(
         )
     }
 ): SnackbarHostState {
+    Log.d("MIINE", "rememberSnackbarHostState")
     val context = LocalContext.current
     val lifecycleOwner = context as? LifecycleOwner
     val snackbarHostState = remember {
@@ -45,17 +47,23 @@ fun rememberSnackbarHostState(
     }
     val lifecycleObserver = rememberLifecycleObserver(
         key = Unit,
+        onResume = {
+            Log.d("MIINE", "rememberSnackbarHostState resume")
+        },
         onPause = {
+            Log.d("MIINE", "rememberSnackbarHostState pause")
             holder.detachController()
         }
     )
     LaunchedEffect(Unit) {
+        Log.d("MIINE", "rememberSnackbarHostState Launched")
         lifecycleOwner?.lifecycle?.addObserver(lifecycleObserver)
         holder.attachController(controller)
     }
     DisposableEffect(Unit) {
 
         onDispose {
+            Log.d("MIINE", "rememberSnackbarHostState disposed")
             holder.detachController()
             lifecycleOwner?.lifecycle?.removeObserver(lifecycleObserver)
         }
