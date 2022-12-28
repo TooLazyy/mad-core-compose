@@ -45,6 +45,9 @@ fun rememberSnackbarHostState(
     }
     val lifecycleObserver = rememberLifecycleObserver(
         key = Unit,
+        onResume = {
+            holder.attachController(controller)
+        },
         onPause = {
             holder.detachController()
         }
