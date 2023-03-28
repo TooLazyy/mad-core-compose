@@ -94,8 +94,9 @@ fun rememberAppSnackState(
     DisposableEffect(Unit) {
 
         onDispose {
-            holder.detachController()
             lifecycleOwner?.lifecycle?.removeObserver(lifecycleObserver)
+            holder.detachController()
+            cancelAndHideAppSnack()
         }
     }
     return appSnackState.value
