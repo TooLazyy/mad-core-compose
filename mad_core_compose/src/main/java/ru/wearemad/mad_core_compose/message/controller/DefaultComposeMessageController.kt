@@ -3,7 +3,6 @@ package ru.wearemad.mad_core_compose.message.controller
 import android.content.Context
 import android.widget.Toast
 import ru.wearemad.mad_core_compose.message.data.AppShackData
-import ru.wearemad.mad_core_compose.message.data.AppSnackActionResult
 
 class DefaultComposeMessageController(
     private val context: Context,
@@ -14,13 +13,11 @@ class DefaultComposeMessageController(
 
     override fun showSnack(
         data: AppShackData,
-        listener: (result: AppSnackActionResult) -> Unit
     ) {
         cancelSnackbar()
         onSnackBarEvent(
             ComposeMessageController.AppSnackBarEvent.Show(
                 data,
-                listener
             )
         )
     }

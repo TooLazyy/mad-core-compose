@@ -42,13 +42,15 @@ fun rememberAppSnackState(
         null
     }
     val appSnackState: MutableState<AppSnackState> = remember {
-        mutableStateOf(AppSnackState.Hidden)
+        mutableStateOf(AppSnackState.Hidden(null))
     }
 
     fun cancelAndHideAppSnack() {
         snackJob?.cancel()
         snackJob = null
-        appSnackState.value = AppSnackState.Hidden
+        appSnackState.value = AppSnackState.Hidden(
+            appSnackState.value.payload
+        )
     }
 
     val controller = remember {

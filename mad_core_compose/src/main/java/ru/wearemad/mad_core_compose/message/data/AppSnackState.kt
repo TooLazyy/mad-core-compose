@@ -5,9 +5,13 @@ import androidx.compose.runtime.Stable
 @Stable
 sealed interface AppSnackState {
 
-    object Hidden : AppSnackState
+    val payload: Any?
+
+    data class Hidden(
+        override val payload: Any?
+    ) : AppSnackState
 
     data class Visible(
-        val payload: Any?
+        override val payload: Any?
     ) : AppSnackState
 }

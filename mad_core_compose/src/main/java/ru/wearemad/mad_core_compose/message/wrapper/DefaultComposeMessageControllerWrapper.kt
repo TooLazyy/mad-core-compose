@@ -1,7 +1,6 @@
 package ru.wearemad.mad_core_compose.message.wrapper
 
 import ru.wearemad.mad_core_compose.message.data.AppShackData
-import ru.wearemad.mad_core_compose.message.data.AppSnackActionResult
 import ru.wearemad.mad_core_compose.message.holder.MessageControllerHolder
 
 class DefaultComposeMessageControllerWrapper(
@@ -14,11 +13,8 @@ class DefaultComposeMessageControllerWrapper(
 
     override fun showSnack(
         data: AppShackData,
-        listener: (result: AppSnackActionResult) -> Unit
     ) {
-        holder.getMessageController()?.showSnack(
-            data, listener
-        )
+        holder.getMessageController()?.showSnack(data)
     }
 
     override fun showToast(text: String, duration: Int) {
