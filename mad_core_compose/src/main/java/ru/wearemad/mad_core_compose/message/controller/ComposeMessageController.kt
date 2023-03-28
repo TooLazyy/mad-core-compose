@@ -1,18 +1,26 @@
 package ru.wearemad.mad_core_compose.message.controller
 
-import androidx.compose.material.SnackbarDuration
-import androidx.compose.material.SnackbarResult
+import ru.wearemad.mad_core_compose.message.data.AppShackData
+import ru.wearemad.mad_core_compose.message.data.AppSnackActionResult
 
 interface ComposeMessageController {
 
     fun cancelAll()
 
     fun showSnack(
-        text: String,
-        actionText: String?,
-        duration: SnackbarDuration,
-        listener: (result: SnackbarResult) -> Unit
+        data: AppShackData,
+        listener: (result: AppSnackActionResult) -> Unit
     )
 
     fun showToast(text: String, duration: Int)
+
+    sealed interface AppSnackBarEvent {
+
+        object Hide : AppSnackBarEvent
+
+        class Show(
+            val data: AppShackData,
+            val listener: (result: AppSnackActionResult) -> Unit
+        ) : AppSnackBarEvent
+    }
 }

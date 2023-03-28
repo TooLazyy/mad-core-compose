@@ -6,5 +6,5 @@ class DefaultComposeScreenViewModelStoreOwner : ComposeScreenViewModelStoreOwner
 
     private val store = ViewModelStore()
 
-    override fun getViewModelStore(): ViewModelStore = store
+    override val viewModelStore: ViewModelStore = store
 }
