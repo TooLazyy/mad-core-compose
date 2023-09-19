@@ -6,12 +6,12 @@ plugins {
 apply from: '../config.gradle'
 
 android {
-    compileSdkVersion project.compileSdk
+    compileSdk project.compileSdk
 
     defaultConfig {
         applicationId project.appId
         minSdkVersion project.minSdk
-        targetSdkVersion project.targetSdk
+        targetSdk project.targetSdk
         versionCode project.vCode
         versionName project.vName
 
