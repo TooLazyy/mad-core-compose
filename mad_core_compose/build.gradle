@@ -7,7 +7,8 @@ plugins {
 apply from: '../config.gradle'
 
 android {
-    compileSdkVersion project.compileSdk
+    compileSdk project.compileSdk
+    namespace 'ru.wearemad.mad_core_compose'
 
     defaultConfig {
         minSdkVersion project.minSdk
@@ -36,6 +37,11 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion project.composeCompilerVersion
     }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
@@ -46,16 +52,30 @@ dependencies {
 
     implementation "com.github.TooLazyy:Mad-Utils:$madUtilsVersion"
 
-    constraints {
+ /*   constraints {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
             because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
         }
         implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
             because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
         }
+    }*/
+}
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                components.getByName('release')
+                groupId = 'ru.wearemad'
+                artifactId = 'mad_core_compose'
+                version = project.vName
+            }
+        }
     }
 }
 
+/*
 project.afterEvaluate {
     publishing {
         publications {
@@ -64,4 +84,4 @@ project.afterEvaluate {
             }
         }
     }
-}
+}*/
