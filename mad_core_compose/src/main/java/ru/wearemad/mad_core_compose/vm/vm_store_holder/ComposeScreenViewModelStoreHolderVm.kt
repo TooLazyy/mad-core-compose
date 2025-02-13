@@ -20,6 +20,14 @@ class ComposeScreenViewModelStoreHolderVm :
         screenVmMap.remove(screenId)?.viewModelStore?.clear()
     }
 
+    override fun clearForUnusedScreens(screensIds: Set<String>) {
+        screenVmMap.keys.toSet().forEach { key ->
+            if (screensIds.contains(key).not()) {
+                clearScreenVmOwner(key)
+            }
+        }
+    }
+
     override fun clearAll() {
         screenVmMap.forEach {
             it.value.viewModelStore.clear()
