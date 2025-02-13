@@ -10,7 +10,10 @@ interface ComposeScreenViewModelStoreHolder {
 
     fun clearScreenVmOwner(screenId: String)
 
-    fun clearForUnusedScreens(screensIds: Set<String>)
+    /**
+     * returns a set of closed vms
+     */
+    fun clearForUnusedScreens(screensIds: Set<String>): Set<String>
 
     fun clearAll()
 }
