@@ -6,8 +6,8 @@ ext {
     targetSdk = 35
 
     //version
-    vCode = 11
-    vName = "1.1.0"
+    vCode = 12
+    vName = "1.2.0"
 
     //gradle
     gradleVersion = '8.6.1'
@@ -23,6 +23,6 @@ ext {
     lifecycleVersion = '2.8.5'
 
     //compose
-    composeRuntimeVersion = '1.7.1'
+    composeRuntimeVersion = '1.8.2'
     composeActivityVersion = '1.10.1'
 }
