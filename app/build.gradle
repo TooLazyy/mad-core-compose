@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'org.jetbrains.kotlin.plugin.compose'
 }
 
 apply from: '../config.gradle'
@@ -36,14 +37,11 @@ android {
     buildFeatures {
         compose true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion project.composeCompilerVersion
-    }
 }
 
 dependencies {
 
-    implementation project (':mad_core_compose')
+    implementation project(':mad_core_compose')
 
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "androidx.activity:activity-compose:$composeActivityVersion"

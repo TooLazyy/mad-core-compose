@@ -1,29 +1,28 @@
 ext {
     applicationName = "Core Compose"
     appId = "ru.wearemad.mad_core"
-    compileSdk = 34
+    compileSdk = 35
     minSdk = 24
-    targetSdk = 34
+    targetSdk = 35
 
     //version
-    vCode = 10
-    vName = "1.0.9"
+    vCode = 11
+    vName = "1.1.0"
 
     //gradle
-    gradleVersion = '8.4.2'
+    gradleVersion = '8.6.1'
 
     //mad
     madUtilsVersion = '1.0.1'
 
     //kotlin
-    kotlinVersion = '1.9.20'
+    kotlinVersion = '2.0.0'
 
     //app compat
-    appCompatVersion = '1.6.1'
+    appCompatVersion = '1.7.0'
     lifecycleVersion = '2.8.5'
 
     //compose
-    composeCompilerVersion = '1.5.5'
     composeRuntimeVersion = '1.7.1'
-    composeActivityVersion = '1.9.2'
+    composeActivityVersion = '1.10.1'
 }
