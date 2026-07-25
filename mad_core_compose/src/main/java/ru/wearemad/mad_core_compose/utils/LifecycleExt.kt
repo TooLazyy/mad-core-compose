@@ -2,7 +2,6 @@ package ru.wearemad.mad_core_compose.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -75,12 +74,9 @@ fun SubscribeToLifecycle(
             screenLifecycleObserver.onActivityStateChanged(ActivityLifecycleState.Destroyed)
         }
     )
-    LaunchedEffect(Unit) {
+    DisposableEffect(lifecycleOwner, activityLifecycleObserver) {
         screenLifecycleObserver.onScreenStateChanged(ScreenLifecycleState.Active)
         lifecycleOwner?.lifecycle?.addObserver(activityLifecycleObserver)
-    }
-    DisposableEffect(Unit) {
-
         onDispose {
             screenLifecycleObserver.onScreenStateChanged(ScreenLifecycleState.Inactive)
             lifecycleOwner?.lifecycle?.removeObserver(activityLifecycleObserver)

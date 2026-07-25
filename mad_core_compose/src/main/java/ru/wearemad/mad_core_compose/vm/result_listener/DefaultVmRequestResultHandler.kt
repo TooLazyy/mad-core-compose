@@ -1,12 +1,14 @@
 package ru.wearemad.mad_core_compose.vm.result_listener
 
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import java.util.concurrent.ConcurrentHashMap
 import ru.wearemad.mad_core_compose.result_handler.RequestResultData
 import ru.wearemad.mad_core_compose.result_handler.RequestResultKey
 import ru.wearemad.mad_core_compose.result_handler.RequestResultStore
@@ -25,7 +27,8 @@ class DefaultVmRequestResultHandler(
 
     private val job = SupervisorJob()
 
-    private val keysSet = mutableSetOf<RequestResultKey>()
+    private val keysSet = ConcurrentHashMap.newKeySet<RequestResultKey>()
+    private val resultsMutex = Mutex()
     private val resultsChannel = Channel<RequestResultData>(
         capacity = Channel.BUFFERED
     )
@@ -54,7 +57,7 @@ class DefaultVmRequestResultHandler(
     }
 
     override fun cancelResults() {
-        job.cancelChildren()
+        job.cancel()
     }
 
     override fun setResult(key: String, result: Any) {
@@ -74,11 +77,13 @@ class DefaultVmRequestResultHandler(
     }
 
     private suspend fun checkCanAskForResults() {
-        keysSet.forEach {
-            val result = requestResultStore.getResultForKey(it)
-            if (result != null && checkLifecycle()) {
-                requestResultStore.consumeResultForKey(it)
-                resultsChannel.send(RequestResultData(it, result))
+        resultsMutex.withLock {
+            keysSet.forEach {
+                val result = requestResultStore.getResultForKey(it)
+                if (result != null && checkLifecycle()) {
+                    requestResultStore.consumeResultForKey(it)
+                    resultsChannel.send(RequestResultData(it, result))
+                }
             }
         }
     }

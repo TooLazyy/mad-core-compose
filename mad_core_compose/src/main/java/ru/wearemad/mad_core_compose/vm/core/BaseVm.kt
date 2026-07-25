@@ -4,7 +4,6 @@ import androidx.annotation.MainThread
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -53,9 +52,10 @@ abstract class BaseVm<State : ViewState, Event : VmEvent>(
     }
 
     override fun onCleared() {
+        super.onCleared()
         eventSource.cancelEvents()
         dependencies.requestResultHandler.cancelResults()
-        parentJob.cancelChildren()
+        parentJob.cancel()
     }
 
     @MainThread

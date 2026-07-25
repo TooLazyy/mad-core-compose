@@ -10,6 +10,10 @@ class ComposeScreenViewModelStoreHolderVm :
 
     private val screenVmMap = hashMapOf<String, ComposeScreenViewModelStoreOwner>()
 
+    override fun onCleared() {
+        clearAll()
+    }
+
     override fun getOrCreateScreenVmOwner(
         screenId: String
     ): ComposeScreenViewModelStoreOwner = screenVmMap.getOrPut(screenId) {

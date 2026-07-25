@@ -9,16 +9,16 @@ import kotlin.properties.Delegates
 
 class DefaultScreenLifecycleObserver : ScreenLifecycleObserver {
 
+    private val viewLifecycleFlow = MutableSharedFlow<LifecycleStateData>(
+        replay = 1,
+        extraBufferCapacity = 7
+    )
+
     private var currentState: LifecycleStateData by Delegates.observable(
         LifecycleStateData()
     ) { _, _, newValue ->
         viewLifecycleFlow.tryEmit(newValue)
     }
-
-    private val viewLifecycleFlow = MutableSharedFlow<LifecycleStateData>(
-        replay = 1,
-        extraBufferCapacity = 7
-    )
 
     override val lifecycleStateFlow: Flow<LifecycleStateData> = viewLifecycleFlow
 
@@ -39,7 +39,7 @@ class DefaultScreenLifecycleObserver : ScreenLifecycleObserver {
          * it's get through the entire lifecycle state up to current
          * Example: we attach observer for the first time, events go Create -> Started -> Resumed.
          * Then re-attach, events are again Create -> Started -> Resumed (cuz resume is the current state).
-         * In order to prevent this, check new event id is strictly less, then new one.
+         * In order to prevent this, check new event id is strictly less than the current one.
          * We can't fall into start or create state after resume if destroy was not called
          */
         val oppositeState = activityCurrentState.checkOppositeState(activityLifecycleState)

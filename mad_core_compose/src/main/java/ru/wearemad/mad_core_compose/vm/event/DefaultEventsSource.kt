@@ -3,7 +3,6 @@ package ru.wearemad.mad_core_compose.vm.event
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -25,7 +24,7 @@ class DefaultEventsSource<Event : VmEvent>(
         get() = eventsChannel.receiveAsFlow()
 
     override fun cancelEvents() {
-        parentJob.cancelChildren()
+        parentJob.cancel()
     }
 
     override fun sendEventAsync(event: Event) {

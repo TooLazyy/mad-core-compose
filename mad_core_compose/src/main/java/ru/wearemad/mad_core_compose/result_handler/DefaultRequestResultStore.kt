@@ -6,6 +6,7 @@ import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import java.io.Serializable
+import java.util.concurrent.ConcurrentHashMap
 
 class DefaultRequestResultStore : RequestResultStore {
 
@@ -14,7 +15,7 @@ class DefaultRequestResultStore : RequestResultStore {
         private const val KEY_DATA = "request_result_store_data"
     }
 
-    private val results = hashMapOf<RequestResultKey, Any>()
+    private val results = ConcurrentHashMap<RequestResultKey, Any>()
     private val resultsChangedChannel = MutableSharedFlow<Unit>(
         onBufferOverflow = BufferOverflow.DROP_OLDEST,
         extraBufferCapacity = 5
@@ -47,6 +48,7 @@ class DefaultRequestResultStore : RequestResultStore {
 
     private fun restoreFromBundle(bundle: Bundle) {
         bundle.keySet().forEach {
+            @Suppress("DEPRECATION")
             val data = bundle.get(it)
             if (data != null) {
                 results[RequestResultKey(it)] = data
