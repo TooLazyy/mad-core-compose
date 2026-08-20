@@ -11,6 +11,10 @@ class DefaultComposeMessageControllerWrapper(
         holder.getMessageController()?.cancelAll()
     }
 
+    override fun cancelSnack() {
+        holder.getMessageController()?.cancelSnack()
+    }
+
     override fun showSnack(
         data: AppShackData,
     ) {

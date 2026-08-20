@@ -6,6 +6,8 @@ interface ComposeMessageController {
 
     fun cancelAll()
 
+    fun cancelSnack()
+
     fun showSnack(
         data: AppShackData,
     )

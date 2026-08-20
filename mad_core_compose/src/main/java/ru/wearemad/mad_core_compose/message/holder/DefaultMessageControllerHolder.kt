@@ -11,7 +11,7 @@ class DefaultMessageControllerHolder : MessageControllerHolder {
     }
 
     override fun detachController() {
-        holder?.cancelAll()
+        holder?.cancelSnack()
         holder = null
     }
 

@@ -37,6 +37,10 @@ class DefaultComposeMessageController(
         clear()
     }
 
+    override fun cancelSnack() {
+        cancelSnackbar()
+    }
+
     private fun clear() {
         cancelToast()
         cancelSnackbar()
