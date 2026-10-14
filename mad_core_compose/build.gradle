@@ -50,6 +50,7 @@ dependencies {
     implementation "androidx.compose.runtime:runtime:$composeRuntimeVersion"
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
+    api "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion"
 
     implementation "com.github.TooLazyy:Mad-Utils:$madUtilsVersion"
 }

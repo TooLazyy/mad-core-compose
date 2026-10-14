@@ -1,8 +1,11 @@
 package ru.wearemad.mad_core_compose.vm.vm_store_holder
 
+import androidx.savedstate.SavedStateRegistry
 import ru.wearemad.mad_core_compose.vm.vm_store_owner.ComposeScreenViewModelStoreOwner
 
 interface ComposeScreenViewModelStoreHolder {
+
+    fun attachToParentRegistry(parentRegistry: SavedStateRegistry)
 
     fun getOrCreateScreenVmOwner(
         screenId: String
